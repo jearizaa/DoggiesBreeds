@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+:root{
+  --color-brand: #ff452b;
+  --color-light: #f8f8f8;
+  --color-gray: #e0e0e0;
+  --color-dark: #afafaf;
+}
