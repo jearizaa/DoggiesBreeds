@@ -1,7 +1,7 @@
 import React from 'react'
+import './_Card.scss'
 
 export default function Card({dog}) {
-    console.log(dog.id)
     return (
         <div className='cardContainer'>
             {

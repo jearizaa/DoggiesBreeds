@@ -1,0 +1,21 @@
+.searchBarContainer{
+    .inputBase{
+        background: white;
+        margin-left: 30px;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 900px) {
+    .searchBarContainer{
+        &.hidden{
+            visibility: hidden;
+        }
+        .iconButton{
+            background: var(--color-brand);
+            color: white;
+        }
+    }
+
+    
+}

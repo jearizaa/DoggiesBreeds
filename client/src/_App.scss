@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  .navContainer{
+    position: fixed;
+    top: 0;
+  }
+  .catalogueContainer{
+    margin-top: var(--nav-height);
+    padding-top: 10px;
+  }
+}
+
+:root{
+  --color-brand: #ff452b;
+  --color-light: #f8f8f8;
+  --color-gray: #e0e0e0;
+  --color-dark: #afafaf;
+  --nav-height: 56px;
+}

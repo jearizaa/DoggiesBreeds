@@ -1,0 +1,58 @@
+.catalogueContainer{
+    display: flex;
+    .catalogueScreen{
+        width: 100%;
+        .searchBarContainer{
+            display: none;
+        }
+        .catalogueMatrix{
+            display: grid;
+            grid-auto-rows: 420px;
+            grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+        }
+    }    
+}
+
+@media (max-width: 1600px) {
+    .catalogueContainer {
+      .catalogueScreen {
+        .catalogueMatrix {
+          grid-template-columns: 25% 25% 25% 25%;
+        }
+      }
+    }
+}
+
+@media (max-width: 1200px) {
+    .catalogueContainer {
+      .catalogueScreen {
+        .catalogueMatrix {
+          grid-template-columns: 33.3% 33.3% 33.3%;
+        }
+      }
+    }
+}
+
+@media (max-width: 900px) {
+    .catalogueContainer {
+      .catalogueScreen {
+        .searchBarContainer{
+            display: block;
+        }
+        .catalogueMatrix {
+          grid-template-columns: 50% 50%;
+        }
+      }
+    }
+}
+  
+@media (max-width: 600px) {
+    .catalogueContainer {
+      .catalogueScreen {
+        .catalogueMatrix {
+          grid-template-columns: 100%;
+        }
+      }
+    }
+}
+  

@@ -1,0 +1,35 @@
+.navContainer{
+    position: fixed;
+    top: 0;
+    height: var(--nav-height);
+    width: 100%;
+    overflow: hidden;
+    .appBar{
+        background: var(--color-brand);
+        .typo{
+            flex-grow: 1;
+            margin: 0;
+        }
+        .iconButton{
+            color: white;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .navContainer {
+        .toolBar {
+            .typo.hiddenTypo{
+                display: none;
+            }
+            .searchBarContainer.hidden{
+                visibility: visible;
+                flex-grow: 1;
+            }
+            .searchBarContainer.visible{
+                display: none;
+            }
+        }
+    }
+}
+  
