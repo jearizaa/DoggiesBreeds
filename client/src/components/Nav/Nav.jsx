@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
 import PetsIcon from '@material-ui/icons/Pets';
-import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchBar from '../SearchBar/SearchBar';
 

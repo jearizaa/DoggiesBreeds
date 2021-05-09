@@ -17,7 +17,6 @@ export default function Catalogue() {
             let data = await axios.get(`https://api.thedogapi.com/v1/images/search?limit=12&page=${page}&order=asc`, {
                 headers: {'x-api-key': '2d661813-6ac9-4c1a-9438-b7ed68030f94'}
             })
-            console.log(data.data)
             setDogs([...data.data])
         }
         getDoggies()
@@ -35,7 +34,6 @@ export default function Catalogue() {
         }else{
             dispatch(setVisible())
         }
-        console.log(window.scrollY)
     }
 
     return (

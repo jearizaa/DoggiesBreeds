@@ -1,8 +1,10 @@
 .App {
   text-align: center;
+  position: relative;
   .navContainer{
     position: fixed;
     top: 0;
+    z-index: 10;
   }
   .catalogueContainer{
     margin-top: var(--nav-height);
@@ -17,3 +19,4 @@
   --color-dark: #afafaf;
   --nav-height: 56px;
 }
+
