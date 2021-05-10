@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setQuery, setSearch } from '../../redux/searchBarReducer/searchBarActions'
+import { setQuery, setSearch, setFilter } from '../../redux/searchBarReducer/searchBarActions'
 import { searchDoggies, resetSearch, setPage } from '../../redux/catalogueReducer/catalogueActions'
 import { FormControl } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
@@ -18,6 +18,7 @@ export default function SearchBar() {
     function handleChange(event){
         if(event.target.value.length === 0){
             dispatch(setSearch(false))
+            dispatch(setFilter('All'))
             dispatch(resetSearch())
             dispatch(setPage(1))
         }

@@ -38,12 +38,12 @@ export default function Card({dog}) {
             <div className='infoContainer'>
                 <h3>{dog.breeds[0].name || 'Unknown'}</h3>
                 <div className={`info ${slide.first ? 'active': 'inactive'}`}>
-                    <p><span>Country: </span>{dog.breeds[0].country_code || 'Unknown'}</p>                   
+                    <p><span>Breed Group: </span>{dog.breeds[0].breed_group || 'Unknown'}</p>
                     <p><span>Height (cm): </span>{dog.breeds[0].height?.metric || 'Unknown'}</p>
                     <p><span>Weight (kg): </span>{dog.breeds[0].weight?.metric || 'Unknown'}</p>
                 </div>
                 <div className={`info ${slide.second ? 'active': 'inactive'}`}>
-                    <p><span>Breed Group: </span>{dog.breeds[0].breed_group || 'Unknown'}</p>
+                    <p><span>Country: </span>{dog.breeds[0].country_code || 'Unknown'}</p>                   
                     <p><span>Life Span: </span>{dog.breeds[0].life_span || 'Unknown'}</p>
                 </div>  
                 <div className={`info ${slide.third ? 'active': 'inactive'}`}>

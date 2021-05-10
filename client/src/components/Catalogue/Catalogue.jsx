@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setHidden, setVisible } from '../../redux/searchBarReducer/searchBarActions'
+import { setHidden, setVisible, setQuery, setFilter, setSearch } from '../../redux/searchBarReducer/searchBarActions'
 import { addDoggies, setPage } from '../../redux/catalogueReducer/catalogueActions'
 import Card from '../Card/Card'
 import SearchBar from '../SearchBar/SearchBar'
@@ -10,15 +10,16 @@ import './_Catalogue.scss'
 export default function Catalogue() {
     const status = useSelector((state) => state.searchBarReducer.status);
     const search = useSelector((state) => state.searchBarReducer.search)
+    const filter = useSelector((state) => state.searchBarReducer.filter);
+    // const query = useSelector((state) => state.searchBarReducer.query)
     const dogs = useSelector((state) => state.catalogueReducer.dogs)
     const searchDogs = useSelector((state) => state.catalogueReducer.searchDogs)
-    const filter = useSelector((state) => state.searchBarReducer.filter);
     const page = useSelector((state) => state.catalogueReducer.page)
     const [catalogue, setCatalogue] = useState([])
-    const totalCards = 12;    
     const [more, setMore] = useState(true)
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
+    const totalCards = 12;    
 
     useEffect(()=>{    
         window.addEventListener('scroll', handleScroll);
@@ -95,6 +96,14 @@ export default function Catalogue() {
         }        
     }
 
+    const handleBack = () => {
+        dispatch(setPage(1))
+        dispatch(setQuery(''))
+        dispatch(setFilter('All'))
+        dispatch(setSearch(false))
+        setCatalogue(dogs)
+    }
+
     return (
         <div className='catalogueContainer'>
             <div className='catalogueScreen'>
@@ -118,6 +127,19 @@ export default function Catalogue() {
                                     </div>
                                     <h4>Loading...</h4>                                    
                                 </div>) : <></>
+                }
+                {
+                    (!loading && !more && catalogue.length === 0) ?   (<div><div className="defaultResponse">
+                                    <div>
+                                        <img
+                                        alt="loading..."
+                                        src="https://appstickers-cdn.appadvice.com/1234079338/822051998/a59f147de51a578d941ab64f84a5888d-9.png"
+                                        width="150"
+                                        height="150"
+                                        />                                        
+                                    <h4 style={{margin: '0'}}>There is no match.</h4>                                    
+                                    </div>                                    
+                                </div><Button className='loadButton' onClick={handleBack}>Go Back...</Button></div>) : <></>
                 }
                 {                    
                     (!loading && more) ? (<Button className='loadButton' onClick={handleLoad}>Load More ...</Button>) : (<></>)
