@@ -3,6 +3,7 @@ export const GET_DOGS = 'GET_DOGS';
 export const ADD_DOGS = 'ADD_DOGS'
 export const SEARCH_DOGS = 'SEARCH_DOGS'
 export const RESET_SEARCH = 'RESET_SEARCH';
+export const SET_PAGE = 'SET_PAGE'
 
 export function getDoggies() {    
     return async function (dispatch) {
@@ -32,6 +33,15 @@ export function resetSearch() {
     return function (dispatch) {
         dispatch({
             type: RESET_SEARCH,
+        });
+    };
+}
+
+export function setPage(page) {
+    return function (dispatch) {
+        dispatch({
+            type: SET_PAGE,
+            payload: page,
         });
     };
 }

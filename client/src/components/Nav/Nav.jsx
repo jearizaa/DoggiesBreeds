@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './_Nav.scss'
 import { useSelector, useDispatch } from 'react-redux';
 import { setQuery, setSearch, setFilter } from '../../redux/searchBarReducer/searchBarActions'
-import { resetSearch } from '../../redux/catalogueReducer/catalogueActions'
+import { resetSearch, setPage } from '../../redux/catalogueReducer/catalogueActions'
 import AppBar from '@material-ui/core/AppBar';
 import PetsIcon from '@material-ui/icons/Pets';
 import IconButton from '@material-ui/core/IconButton';
@@ -24,6 +24,8 @@ export default function Nav() {
         dispatch(setQuery('')) 
         dispatch(setSearch(false))
         dispatch(resetSearch())
+        dispatch(setFilter('All'))
+        dispatch(setPage(1))
     }
 
     const handleClick = (event) => {
@@ -37,6 +39,7 @@ export default function Nav() {
     const handleFilter = (event) => {
         dispatch(setFilter(event.target.textContent))
         handleClose()
+        dispatch(setPage(1))
     }
 
     return (

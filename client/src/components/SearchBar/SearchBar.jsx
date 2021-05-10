@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { setQuery, setSearch } from '../../redux/searchBarReducer/searchBarActions'
-import { searchDoggies, resetSearch } from '../../redux/catalogueReducer/catalogueActions'
+import { searchDoggies, resetSearch, setPage } from '../../redux/catalogueReducer/catalogueActions'
 import { FormControl } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,6 +19,7 @@ export default function SearchBar() {
         if(event.target.value.length === 0){
             dispatch(setSearch(false))
             dispatch(resetSearch())
+            dispatch(setPage(1))
         }
         dispatch(setQuery(event.target.value))        
     }
@@ -27,6 +28,7 @@ export default function SearchBar() {
         if(query.length > 0){
             dispatch(searchDoggies(query))
             dispatch(setSearch(true))
+            dispatch(setPage(1))
         }
     }
 

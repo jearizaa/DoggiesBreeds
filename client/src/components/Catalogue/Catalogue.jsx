@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { setHidden, setVisible } from '../../redux/searchBarReducer/searchBarActions'
-import { addDoggies } from '../../redux/catalogueReducer/catalogueActions'
+import { addDoggies, setPage } from '../../redux/catalogueReducer/catalogueActions'
 import Card from '../Card/Card'
 import SearchBar from '../SearchBar/SearchBar'
 import Button from '@material-ui/core/Button';
@@ -9,14 +9,13 @@ import './_Catalogue.scss'
 
 export default function Catalogue() {
     const status = useSelector((state) => state.searchBarReducer.status);
-    //const query = useSelector((state) => state.searchBarReducer.query);
     const search = useSelector((state) => state.searchBarReducer.search)
     const dogs = useSelector((state) => state.catalogueReducer.dogs)
     const searchDogs = useSelector((state) => state.catalogueReducer.searchDogs)
     const filter = useSelector((state) => state.searchBarReducer.filter);
+    const page = useSelector((state) => state.catalogueReducer.page)
     const [catalogue, setCatalogue] = useState([])
-    const totalCards = 12;
-    const [page, setPage] = useState(1)
+    const totalCards = 12;    
     const [more, setMore] = useState(true)
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
@@ -30,8 +29,9 @@ export default function Catalogue() {
     })
 
     useEffect(() => {
+        let filtering = []
         if(!search){
-            let filtering = dogs.filter(dog => {
+            filtering = dogs.filter(dog => {
                 if(filter === 'All'){
                     return true
                 }else{
@@ -46,7 +46,7 @@ export default function Catalogue() {
             })
             setCatalogue(filtering)
         }else{
-            let filtering = searchDogs.filter(dog => {
+            filtering = searchDogs.filter(dog => {
                 if(filter === 'All'){
                     return true
                 }else{
@@ -58,10 +58,24 @@ export default function Catalogue() {
                     }
                     return dog.breeds[0].breed_group === filter
                 }
-            })
+            })            
             setCatalogue(filtering)
         }
-    }, [dogs, searchDogs, search, filter])
+        if(filtering.length < page*totalCards){
+            setMore(false)
+        }else{
+            setMore(true)
+        }
+    }, [dogs, searchDogs, search, filter, page])
+
+    useEffect(() => {
+        if(catalogue.length <= (page-1)*totalCards){
+            setLoading(true)
+            setTimeout(() => setLoading(false), 5000)
+        }else{
+            setLoading(false)
+        }
+    }, [catalogue, page])
 
     const handleScroll = (event) => {
         if(window.scrollY > 60){
@@ -74,7 +88,7 @@ export default function Catalogue() {
     const handleLoad = () => {
         if(page < 12){
             dispatch(addDoggies(page+1))
-            setPage(page + 1)
+            dispatch(setPage(page + 1))
             if(page + 1 === 12){//limitamos a 12 paginas, algunas respuestas de la API estan vacias
                 setMore(false)
             }
@@ -93,12 +107,21 @@ export default function Catalogue() {
                 }
                 </div> 
                 {
-                    loading ? (<div>Loading...</div>) : <></>
+                    loading ?   (<div className="defaultResponse">
+                                    <div>
+                                        <img
+                                        alt="loading..."
+                                        src="https://i.pinimg.com/originals/83/23/61/83236186c07e9ee1d3ac6094209f5cb0.gif"
+                                        width="150"
+                                        height="150"
+                                        />                                        
+                                    </div>
+                                    <h4>Loading...</h4>                                    
+                                </div>) : <></>
                 }
                 {                    
-                    more ? (<Button className='loadButton' onClick={handleLoad}>Load More ...</Button>) : (<></>)
-                }
-                
+                    (!loading && more) ? (<Button className='loadButton' onClick={handleLoad}>Load More ...</Button>) : (<></>)
+                }                
             </div>                    
         </div>
     )
