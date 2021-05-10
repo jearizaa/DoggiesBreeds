@@ -29,28 +29,28 @@ export default function Card({dog}) {
         <div className='cardContainer'>
             <div className='imageContainer'>
             <div className='frontImage'>
-                <img  src={dog.url} alt={dog.breeds[0].reference_image_id} />
+                <img  src={dog.url} alt={dog.breeds[0].reference_image_id || 'Unknown'} />
             </div>
             <div className='backImage'>
-                <img src={dog.url} alt={dog.breeds[0].reference_image_id} />
+                <img src={dog.url} alt={dog.breeds[0].reference_image_id || 'Unknown'} />
             </div>
             </div>  
             <div className='infoContainer'>
-                <h3>{dog.breeds[0].name || '-'}</h3>
+                <h3>{dog.breeds[0].name || 'Unknown'}</h3>
                 <div className={`info ${slide.first ? 'active': 'inactive'}`}>
-                    <p><span>Country: </span>{dog.breeds[0].country_code || '-'}</p>                   
-                    <p><span>Height (cm): </span>{dog.breeds[0].height.metric || '-'}</p>
-                    <p><span>Weight (kg): </span>{dog.breeds[0].weight.metric || '-'}</p>
+                    <p><span>Country: </span>{dog.breeds[0].country_code || 'Unknown'}</p>                   
+                    <p><span>Height (cm): </span>{dog.breeds[0].height?.metric || 'Unknown'}</p>
+                    <p><span>Weight (kg): </span>{dog.breeds[0].weight?.metric || 'Unknown'}</p>
                 </div>
                 <div className={`info ${slide.second ? 'active': 'inactive'}`}>
-                    <p><span>Breed Group: </span>{dog.breeds[0].breed_group || '-'}</p>
-                    <p><span>Life Span: </span>{dog.breeds[0].life_span || '-'}</p>
+                    <p><span>Breed Group: </span>{dog.breeds[0].breed_group || 'Unknown'}</p>
+                    <p><span>Life Span: </span>{dog.breeds[0].life_span || 'Unknown'}</p>
                 </div>  
                 <div className={`info ${slide.third ? 'active': 'inactive'}`}>
-                    <p><span>Temperament: </span>{dog.breeds[0].temperament || '-'}</p>
+                    <p><span>Temperament: </span>{dog.breeds[0].temperament || 'Unknown'}</p>
                 </div> 
                 <div className={`info ${slide.fourth ? 'active': 'inactive'}`}>
-                    <p><span>Bred for: </span>{dog.breeds[0].bred_for || '-'}</p>
+                    <p><span>Bred for: </span>{dog.breeds[0].bred_for || 'Unknown'}</p>
                 </div>  
             </div>    
             <div className='formContainer'>

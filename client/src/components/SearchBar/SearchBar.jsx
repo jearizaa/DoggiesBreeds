@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setQuery } from '../../redux/searchBarReducer/searchBarActions'
+import { setQuery, setSearch } from '../../redux/searchBarReducer/searchBarActions'
+import { searchDoggies, resetSearch } from '../../redux/catalogueReducer/catalogueActions'
 import { FormControl } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,14 +16,25 @@ export default function SearchBar() {
     const dispatch = useDispatch()
 
     function handleChange(event){
-        dispatch(setQuery(event.target.value))
+        if(event.target.value.length === 0){
+            dispatch(setSearch(false))
+            dispatch(resetSearch())
+        }
+        dispatch(setQuery(event.target.value))        
+    }
+
+    function handleSearch(){
+        if(query.length > 0){
+            dispatch(searchDoggies(query))
+            dispatch(setSearch(true))
+        }
     }
 
     return (
         <div className={`searchBarContainer ${status}`}>
         <FormControl>
             <Toolbar>
-                <IconButton className='iconButton' edge='end'>  
+                <IconButton className='iconButton' edge='end' onClick={handleSearch}>  
                     <SearchIcon />
                 </IconButton>
                 <InputBase

@@ -10,6 +10,11 @@
             grid-auto-rows: 420px;
             grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
         }
+        .loadButton{
+          background: var(--color-brand);
+          color: white;
+          font-family: 'Itim', cursive;
+        }
     }    
 }
 

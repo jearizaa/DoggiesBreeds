@@ -5,21 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import store from "./redux/store";
-
+import { getDoggies } from './redux/catalogueReducer/catalogueActions'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+store.dispatch(getDoggies())
 
 const theme = createMuiTheme({
 
 });
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
