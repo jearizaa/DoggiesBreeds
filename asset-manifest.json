@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/DoggiesBreeds/static/css/main.81f0d946.chunk.css",
-    "main.js": "/DoggiesBreeds/static/js/main.738bd8e8.chunk.js",
-    "main.js.map": "/DoggiesBreeds/static/js/main.738bd8e8.chunk.js.map",
+    "main.css": "/DoggiesBreeds/static/css/main.3477ca8a.chunk.css",
+    "main.js": "/DoggiesBreeds/static/js/main.05def81c.chunk.js",
+    "main.js.map": "/DoggiesBreeds/static/js/main.05def81c.chunk.js.map",
     "runtime-main.js": "/DoggiesBreeds/static/js/runtime-main.58f6ba3f.js",
     "runtime-main.js.map": "/DoggiesBreeds/static/js/runtime-main.58f6ba3f.js.map",
     "static/js/2.8445aaa4.chunk.js": "/DoggiesBreeds/static/js/2.8445aaa4.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.ef2c8b7a.chunk.js": "/DoggiesBreeds/static/js/3.ef2c8b7a.chunk.js",
     "static/js/3.ef2c8b7a.chunk.js.map": "/DoggiesBreeds/static/js/3.ef2c8b7a.chunk.js.map",
     "index.html": "/DoggiesBreeds/index.html",
-    "static/css/main.81f0d946.chunk.css.map": "/DoggiesBreeds/static/css/main.81f0d946.chunk.css.map",
+    "static/css/main.3477ca8a.chunk.css.map": "/DoggiesBreeds/static/css/main.3477ca8a.chunk.css.map",
     "static/js/2.8445aaa4.chunk.js.LICENSE.txt": "/DoggiesBreeds/static/js/2.8445aaa4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.58f6ba3f.js",
     "static/js/2.8445aaa4.chunk.js",
-    "static/css/main.81f0d946.chunk.css",
-    "static/js/main.738bd8e8.chunk.js"
+    "static/css/main.3477ca8a.chunk.css",
+    "static/js/main.05def81c.chunk.js"
   ]
 }
